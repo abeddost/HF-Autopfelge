@@ -32,7 +32,7 @@ export default function EnquiryBuilder() {
     .join("\n");
 
   const field =
-    "w-full rounded-2xl border border-white/10 bg-ink/60 px-4 py-3.5 text-snow placeholder:text-mist/70 transition-colors focus:border-champagne/60 focus:outline-none";
+    "w-full rounded-2xl border border-white/10 bg-ink/60 px-4 py-3.5 text-snow placeholder:text-mist/70 transition-colors focus:border-brand/60 focus:outline-none";
   const label = "mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-mist";
 
   return (
@@ -113,7 +113,7 @@ export default function EnquiryBuilder() {
         </div>
       </div>
 
-      <button type="submit" className="btn btn-gold mt-8 w-full">
+      <button type="submit" className="btn btn-primary mt-8 w-full">
         Nachricht in WhatsApp öffnen
         <ArrowRightIcon width={18} height={18} />
       </button>

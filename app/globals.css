@@ -8,15 +8,16 @@
   --color-mist: #8b9099;
   --color-pearl: #c9ccd2;
   --color-snow: #f3f1ec;
-  --color-ivory: #f5f1e8;
-  --color-sand: #e7e0d1;
-  --color-champagne: #c9a86a;
-  --color-champagne-light: #e4cb97;
-  --color-champagne-dark: #8e7341;
-  --color-champagne-deep: #6b5527;
+  --color-ivory: #f2f4f8;
+  --color-sand: #e1e6ee;
+  /* Blau aus dem Logo (#004ae1); brand ist aufgehellt, damit Text auf ink lesbar bleibt (≈5:1) */
+  --color-brand: #3b7bff;
+  --color-brand-light: #8fb4ff;
+  --color-brand-dark: #004ae1;
+  --color-brand-deep: #00349f;
   --color-whatsapp: #25d366;
 
-  --font-display: var(--font-fraunces), "Times New Roman", serif;
+  --font-display: var(--font-saira), system-ui, sans-serif;
   --font-sans: var(--font-manrope), system-ui, sans-serif;
 
   --ease-lux: cubic-bezier(0.22, 1, 0.36, 1);
@@ -38,11 +39,11 @@
     overflow-x: clip;
   }
   ::selection {
-    background: var(--color-champagne);
+    background: var(--color-brand);
     color: var(--color-ink);
   }
   :focus-visible {
-    outline: 2px solid var(--color-champagne);
+    outline: 2px solid var(--color-brand);
     outline-offset: 3px;
     border-radius: 4px;
   }
@@ -90,7 +91,7 @@
     font-weight: 600;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: var(--color-champagne);
+    color: var(--color-brand);
   }
   .eyebrow::before {
     content: "";
@@ -102,18 +103,20 @@
 
   .h-display {
     font-family: var(--font-display);
-    font-weight: 400;
-    letter-spacing: -0.02em;
-    line-height: 1.04;
-    font-variation-settings: "opsz" 144;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.02;
+    font-variation-settings: "wdth" 112;
+    /* lange deutsche Komposita („Fahrzeugaufbereitung") auf schmalen Screens trennen statt überlaufen */
+    hyphens: auto;
+    text-wrap: balance;
   }
 
-  .text-gold {
-    background: linear-gradient(100deg, var(--color-champagne-light) 0%, var(--color-champagne) 45%, var(--color-champagne-dark) 100%);
+  .text-shine {
+    background: linear-gradient(100deg, var(--color-brand-light) 0%, var(--color-brand) 60%, #2f6bff 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    font-style: italic;
   }
 
   .hairline {
@@ -141,7 +144,7 @@
     padding: 1px;
     background: radial-gradient(
       420px circle at var(--mx, 50%) var(--my, 0%),
-      rgb(228 203 151 / 0.55),
+      rgb(143 180 255 / 0.55),
       transparent 45%
     );
     -webkit-mask:
@@ -158,7 +161,7 @@
     inset: 0;
     z-index: -1;
     border-radius: inherit;
-    background: radial-gradient(500px circle at var(--mx, 50%) var(--my, 0%), rgb(201 168 106 / 0.07), transparent 40%);
+    background: radial-gradient(500px circle at var(--mx, 50%) var(--my, 0%), rgb(59 123 255 / 0.08), transparent 40%);
     opacity: 0;
     transition: opacity 0.5s var(--ease-lux);
   }
@@ -195,13 +198,13 @@
   .btn:active {
     transform: scale(0.98);
   }
-  .btn-gold {
-    color: var(--color-ink);
-    background: linear-gradient(120deg, var(--color-champagne-light), var(--color-champagne) 55%, #b8955a);
-    box-shadow: 0 10px 30px -12px rgb(201 168 106 / 0.6), inset 0 1px 0 rgb(255 255 255 / 0.35);
+  .btn-primary {
+    color: #fff;
+    background: linear-gradient(120deg, #2f6bff, var(--color-brand-dark) 70%);
+    box-shadow: 0 10px 30px -12px rgb(0 74 225 / 0.6), inset 0 1px 0 rgb(255 255 255 / 0.25);
   }
-  .btn-gold:hover {
-    box-shadow: 0 16px 40px -14px rgb(201 168 106 / 0.8), inset 0 1px 0 rgb(255 255 255 / 0.35);
+  .btn-primary:hover {
+    box-shadow: 0 16px 40px -14px rgb(0 74 225 / 0.85), inset 0 1px 0 rgb(255 255 255 / 0.25);
     transform: translateY(-1px);
   }
   .btn-ghost {
@@ -211,7 +214,7 @@
     backdrop-filter: blur(10px);
   }
   .btn-ghost:hover {
-    border-color: rgb(228 203 151 / 0.6);
+    border-color: rgb(143 180 255 / 0.6);
     background: rgb(255 255 255 / 0.06);
   }
   .btn-dark {
@@ -289,7 +292,7 @@
     margin-top: 0.5rem;
   }
   .legal a {
-    color: var(--color-champagne-light);
+    color: var(--color-brand-light);
     text-decoration: underline;
     text-underline-offset: 3px;
   }

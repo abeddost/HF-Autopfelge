@@ -15,7 +15,7 @@ export default function ExtrasTable({ light = false }: { light?: boolean }) {
             aria-hidden
             className={`min-w-6 flex-1 translate-y-[-4px] border-b border-dotted ${light ? "border-ink/20" : "border-white/15"}`}
           />
-          <span className={`whitespace-nowrap font-display text-xl tabular-nums ${light ? "text-ink" : "text-champagne-light"}`}>
+          <span className={`whitespace-nowrap font-display text-xl tabular-nums ${light ? "text-ink" : "text-brand-light"}`}>
             {formatPrice(extra.price, extra.note ?? "auf Anfrage")}
           </span>
         </li>

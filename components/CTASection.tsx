@@ -8,7 +8,7 @@ import Reveal from "./Reveal";
 export default function CTASection({
   title = (
     <>
-      Bereit für <span className="text-gold">neuen Glanz?</span>
+      Bereit für <span className="text-shine">neuen Glanz?</span>
     </>
   ),
   text = "Rufen Sie an oder schreiben Sie uns per WhatsApp – wir besprechen Ihr Fahrzeug und finden einen passenden Termin.",

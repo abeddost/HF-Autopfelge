@@ -1,17 +1,30 @@
+import Image from "next/image";
 import Link from "next/link";
 
-export default function Logo({ className = "" }: { className?: string }) {
+// Light-on-transparent variants generated from public/logo.png (the original stays as source master).
+const variants = {
+  wordmark: { src: "/logo-wordmark.png", width: 680, height: 64, className: "h-auto w-[min(255px,calc(100vw-6.5rem))] sm:w-[340px]" },
+  full: { src: "/logo-full.png", width: 640, height: 92, className: "h-auto w-[240px] sm:w-[280px]" },
+} as const;
+
+export default function Logo({
+  variant = "wordmark",
+  className = "",
+}: {
+  variant?: keyof typeof variants;
+  className?: string;
+}) {
+  const v = variants[variant];
   return (
-    <Link href="/" className={`group inline-flex items-center gap-3 ${className}`}>
-      <span aria-hidden className="relative grid h-11 w-11 place-items-center rounded-full border border-champagne/50 transition-colors duration-500 group-hover:border-champagne">
-        <span className="font-display text-[1.05rem] italic leading-none tracking-tight text-champagne-light">HF</span>
-        <span className="absolute inset-1 rounded-full border border-white/5" />
-      </span>
-      <span className="flex flex-col leading-none">
-        <span className="sr-only">Startseite: </span>
-        <span className="font-display text-[1.15rem] tracking-tight text-snow">HF Autopflege</span>
-        <span className="mt-1 text-[0.62rem] font-semibold uppercase tracking-[0.32em] text-mist">Bodenheim</span>
-      </span>
+    <Link href="/" className={`group inline-flex items-center ${className}`}>
+      <Image
+        src={v.src}
+        width={v.width}
+        height={v.height}
+        alt="HF Autopflege Bodenheim – Startseite"
+        priority={variant === "wordmark"}
+        className={`${v.className} transition-opacity duration-500 group-hover:opacity-85`}
+      />
     </Link>
   );
 }

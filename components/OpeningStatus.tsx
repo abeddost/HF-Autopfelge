@@ -59,7 +59,7 @@ export default function OpeningStatus({ className = "" }: { className?: string }
     >
       <span
         className={`h-2 w-2 shrink-0 rounded-full ${
-          status === null ? "bg-mist" : status.open ? "animate-pulse-dot bg-green-400" : "bg-champagne"
+          status === null ? "bg-mist" : status.open ? "animate-pulse-dot bg-green-400" : "bg-brand"
         }`}
       />
       {status?.text ?? "Mo–Sa 10:00–18:00 Uhr"}

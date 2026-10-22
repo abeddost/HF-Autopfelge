@@ -29,7 +29,7 @@ export default function LeistungenPage() {
         eyebrow="Leistungen"
         title={
           <>
-            Fahrzeugaufbereitung in <span className="text-gold">Bodenheim</span>
+            Fahrzeugaufbereitung in <span className="text-shine">Bodenheim</span>
           </>
         }
         intro="Innen, außen und im Detail: Wir stimmen jede Aufbereitung auf Ihr Fahrzeug ab – und besprechen Umfang und Preis vorab mit Ihnen."
@@ -61,7 +61,7 @@ export default function LeistungenPage() {
                   <ul className="mt-8 space-y-3.5">
                     {service.points.map((point) => (
                       <li key={point} className="flex gap-3 text-pearl">
-                        <CheckIcon width={18} height={18} className="mt-1 shrink-0 text-champagne" />
+                        <CheckIcon width={18} height={18} className="mt-1 shrink-0 text-brand" />
                         {point}
                       </li>
                     ))}
@@ -72,7 +72,7 @@ export default function LeistungenPage() {
                   </p>
                   <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                     <WhatsAppButton
-                      variant="gold"
+                      variant="primary"
                       label="Termin anfragen"
                       text={`Hallo HF Autopflege, ich interessiere mich für: ${service.title}. Wann hätten Sie einen Termin frei?`}
                     />

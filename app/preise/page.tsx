@@ -29,7 +29,7 @@ export default function PreisePage() {
         eyebrow="Preise"
         title={
           <>
-            Klare Preise für <span className="text-gold">Glanz</span> und Pflege.
+            Klare Preise für <span className="text-shine">Glanz</span> und Pflege.
           </>
         }
         intro="Unsere Pakete auf einen Blick. Alle Angaben sind Richtpreise – den genauen Preis stimmen wir vorab verbindlich mit Ihnen ab."
@@ -43,7 +43,7 @@ export default function PreisePage() {
 
       {/* Pakete */}
       <section className="section relative overflow-hidden bg-ivory text-ink" aria-labelledby="pakete">
-        <div className="pointer-events-none absolute -left-40 top-20 h-[30rem] w-[30rem] rounded-full bg-champagne/20 blur-3xl" />
+        <div className="pointer-events-none absolute -left-40 top-20 h-[30rem] w-[30rem] rounded-full bg-brand/20 blur-3xl" />
         <div className="container-lux relative">
           <SectionHeading
             light
@@ -59,7 +59,7 @@ export default function PreisePage() {
             ))}
           </div>
           <Reveal className="mx-auto mt-14 flex max-w-2xl items-start gap-4 rounded-2xl border border-ink/10 bg-white/60 p-6 text-ink/75">
-            <SparkleIcon className="mt-0.5 shrink-0 text-champagne-dark" />
+            <SparkleIcon className="mt-0.5 shrink-0 text-brand-dark" />
             <p className="text-[0.95rem] leading-relaxed">{priceNote}</p>
           </Reveal>
         </div>
@@ -90,7 +90,7 @@ export default function PreisePage() {
               eyebrow="Anfrage"
               title={
                 <span id="anfrage">
-                  Ihr Wunschtermin – <span className="text-gold">unkompliziert</span>.
+                  Ihr Wunschtermin – <span className="text-shine">unkompliziert</span>.
                 </span>
               }
               intro="Wählen Sie Leistung und Fahrzeug, wir bereiten Ihre WhatsApp-Nachricht vor. Lieber telefonieren? Wir sind Mo–Sa von 10 bis 18 Uhr erreichbar."

@@ -1,10 +1,10 @@
 import { site, whatsappLink } from "@/lib/site";
 import { PhoneIcon, WhatsAppIcon } from "./icons";
 
-type Variant = "gold" | "ghost" | "dark";
+type Variant = "primary" | "ghost" | "dark";
 
 export function CallButton({
-  variant = "gold",
+  variant = "primary",
   label = "Jetzt anrufen",
   showNumber = false,
   className = "",

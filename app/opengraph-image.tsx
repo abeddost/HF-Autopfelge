@@ -24,7 +24,7 @@ export default async function OpengraphImage() {
           }}
         />
         <div style={{ position: "relative", display: "flex", flexDirection: "column", justifyContent: "center", padding: 80 }}>
-          <div style={{ color: "#c9a86a", fontSize: 24, letterSpacing: 8, textTransform: "uppercase" }}>HF Autopflege</div>
+          <div style={{ color: "#3b7bff", fontSize: 24, letterSpacing: 8, textTransform: "uppercase" }}>HF Autopflege</div>
           <div style={{ color: "#f3f1ec", fontSize: 72, lineHeight: 1.05, marginTop: 24, maxWidth: 820, fontFamily: "serif" }}>
             Autopflege & Fahrzeugaufbereitung in Bodenheim
           </div>

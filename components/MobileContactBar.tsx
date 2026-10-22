@@ -9,7 +9,7 @@ export default function MobileContactBar() {
       style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
     >
       <div className="grid grid-cols-2 gap-2.5">
-        <a href={site.phone.href} className="btn btn-gold min-h-[3.25rem] w-full px-3" aria-label={`Anrufen: ${site.phone.display}`}>
+        <a href={site.phone.href} className="btn btn-primary min-h-[3.25rem] w-full px-3" aria-label={`Anrufen: ${site.phone.display}`}>
           <PhoneIcon />
           Anrufen
         </a>

@@ -53,7 +53,7 @@ export default function Header() {
               >
                 {item.label}
                 <span
-                  className={`absolute -bottom-0.5 left-0 h-px bg-champagne transition-all duration-500 ${
+                  className={`absolute -bottom-0.5 left-0 h-px bg-brand transition-all duration-500 ${
                     active ? "w-full" : "w-0"
                   }`}
                 />
@@ -65,9 +65,9 @@ export default function Header() {
         <div className="flex items-center gap-2">
           <a
             href={site.phone.href}
-            className="hidden items-center gap-2.5 rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold text-snow transition-colors duration-300 hover:border-champagne/60 lg:inline-flex"
+            className="hidden items-center gap-2.5 rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold text-snow transition-colors duration-300 hover:border-brand/60 lg:inline-flex"
           >
-            <PhoneIcon width={16} height={16} className="text-champagne" />
+            <PhoneIcon width={16} height={16} className="text-brand" />
             {site.phone.display}
           </a>
           <button
@@ -98,11 +98,11 @@ export default function Header() {
               style={{ "--delay": `${i * 60}ms` } as CSSProperties}
             >
               {item.label}
-              <span className="text-base text-champagne">0{i + 1}</span>
+              <span className="text-base text-brand">0{i + 1}</span>
             </Link>
           ))}
           <div className="mt-10 grid gap-3 pb-10">
-            <a href={site.phone.href} className="btn btn-gold w-full">
+            <a href={site.phone.href} className="btn btn-primary w-full">
               <PhoneIcon /> {site.phone.display}
             </a>
             <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="btn btn-ghost w-full">

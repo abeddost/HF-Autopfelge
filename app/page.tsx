@@ -33,8 +33,8 @@ export default function HomePage() {
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ink/85 via-ink/35 to-transparent" />
 
         <div className="container-lux pb-14 pt-36 sm:pb-20 lg:pb-24">
-          <h1 className="h-display animate-hero-in max-w-5xl text-[2.9rem] sm:text-7xl lg:text-[6.4rem]" style={d(120)}>
-            Autopflege & <span className="text-gold">Fahrzeugaufbereitung</span> in Bodenheim
+          <h1 className="h-display animate-hero-in max-w-5xl text-[2.5rem] sm:text-6xl lg:text-[5.5rem]" style={d(120)}>
+            Autopflege & <span className="text-shine">Fahrzeugaufbereitung</span> in Bodenheim
           </h1>
           <p className="animate-hero-in mt-7 max-w-xl text-lg leading-relaxed text-pearl sm:text-xl" style={d(240)}>
             Gründliche Pflege für Ihr Auto – innen wie außen. Rufen Sie an oder schreiben Sie uns, wir finden einen
@@ -55,7 +55,7 @@ export default function HomePage() {
               { icon: PhoneIcon, label: "Telefon & WhatsApp", value: site.phone.display, href: site.phone.href },
             ].map(({ icon: Icon, label, value, href }) => (
               <li key={label} className="flex items-center gap-4 bg-ink/70 px-5 py-4 backdrop-blur-md">
-                <Icon className="shrink-0 text-champagne" />
+                <Icon className="shrink-0 text-brand" />
                 <div className="min-w-0">
                   <p className="text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-mist">{label}</p>
                   <p className="truncate text-snow">
@@ -86,7 +86,7 @@ export default function HomePage() {
               eyebrow="Leistungen"
               title={
                 <span id="leistungen">
-                  Pflege, die man <span className="text-gold">sieht</span> und spürt.
+                  Pflege, die man <span className="text-shine">sieht</span> und spürt.
                 </span>
               }
               intro="Von der gründlichen Innenreinigung bis zur Lackversiegelung – wir stimmen den Umfang auf Ihr Fahrzeug und Ihre Wünsche ab."
@@ -118,7 +118,7 @@ export default function HomePage() {
             <Reveal className="max-w-xl">
               <p className="eyebrow">Unser Anspruch</p>
               <h2 id="sorgfalt" className="h-display mt-5 text-[2.4rem] sm:text-5xl">
-                Gründlich statt <span className="text-gold">schnell</span>.
+                Gründlich statt <span className="text-shine">schnell</span>.
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-mist">
                 Eine gute Aufbereitung braucht Zeit und Aufmerksamkeit. Deshalb besprechen wir vorab, was Ihr Fahrzeug
@@ -131,7 +131,7 @@ export default function HomePage() {
                   ["Termin nach Wunsch", "Montag bis Samstag, 10 bis 18 Uhr."],
                 ].map(([title, text]) => (
                   <li key={title} className="flex gap-4">
-                    <span className="mt-1 grid h-7 w-7 shrink-0 place-items-center rounded-full border border-champagne/40 text-champagne">
+                    <span className="mt-1 grid h-7 w-7 shrink-0 place-items-center rounded-full border border-brand/40 text-brand">
                       <CheckIcon width={15} height={15} />
                     </span>
                     <div>
@@ -162,7 +162,7 @@ export default function HomePage() {
 
       {/* Preise-Teaser */}
       <section className="section relative overflow-hidden bg-ivory text-ink" aria-labelledby="preise">
-        <div className="pointer-events-none absolute -right-40 -top-40 h-[30rem] w-[30rem] rounded-full bg-champagne/20 blur-3xl" />
+        <div className="pointer-events-none absolute -right-40 -top-40 h-[30rem] w-[30rem] rounded-full bg-brand/20 blur-3xl" />
         <div className="container-lux relative">
           <SectionHeading
             light
@@ -193,7 +193,7 @@ export default function HomePage() {
             eyebrow="Standort & Öffnungszeiten"
             title={
               <span id="standort">
-                Ihre Autopflege in <span className="text-gold">Bodenheim</span>.
+                Ihre Autopflege in <span className="text-shine">Bodenheim</span>.
               </span>
             }
             intro={`Sie finden uns in der ${site.address.street} in Bodenheim – nur wenige Minuten von Mainz entfernt. Wir freuen uns auf Kundinnen und Kunden aus Bodenheim, Nackenheim, Gau-Bischofsheim, Harxheim, Lörzweiler, Mainz-Laubenheim, Nierstein und Oppenheim.`}
@@ -217,7 +217,7 @@ export default function HomePage() {
             <Reveal delay={100}>
               <p className="mt-6 text-mist">
                 Noch etwas offen? Rufen Sie uns an: <br />
-                <a href={site.phone.href} className="link-underline text-champagne-light">
+                <a href={site.phone.href} className="link-underline text-brand-light">
                   {site.phone.display}
                 </a>
               </p>

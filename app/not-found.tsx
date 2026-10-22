@@ -7,7 +7,7 @@ export default function NotFound() {
       <div className="container-lux text-center">
         <p className="eyebrow justify-center">Fehler 404</p>
         <h1 className="h-display mt-6 text-5xl sm:text-7xl">
-          Diese Seite <span className="text-gold">glänzt</span> durch Abwesenheit.
+          Diese Seite <span className="text-shine">glänzt</span> durch Abwesenheit.
         </h1>
         <p className="mx-auto mt-6 max-w-md text-lg text-mist">Die gesuchte Seite gibt es leider nicht.</p>
         <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">

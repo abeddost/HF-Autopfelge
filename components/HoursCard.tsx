@@ -8,7 +8,7 @@ export function HoursCard() {
     <SheenCard className="h-full p-8 sm:p-10">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <h3 className="flex items-center gap-3 font-display text-2xl text-snow">
-          <ClockIcon className="text-champagne" /> Öffnungszeiten
+          <ClockIcon className="text-brand" /> Öffnungszeiten
         </h3>
         <OpeningStatus />
       </div>
@@ -30,7 +30,7 @@ export function LocationCard() {
   return (
     <SheenCard className="flex h-full flex-col p-8 sm:p-10">
       <h3 className="flex items-center gap-3 font-display text-2xl text-snow">
-        <MapPinIcon className="text-champagne" /> Standort
+        <MapPinIcon className="text-brand" /> Standort
       </h3>
       <address className="mt-8 text-lg not-italic leading-relaxed text-pearl">
         {site.name}

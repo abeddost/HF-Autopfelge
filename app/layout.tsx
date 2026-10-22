@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
-import { Fraunces, Manrope } from "next/font/google";
+import { Manrope, Saira } from "next/font/google";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import JsonLd from "@/components/JsonLd";
@@ -11,13 +11,8 @@ import { site } from "@/lib/site";
 import "./globals.css";
 
 // next/font lädt die Schriften beim Build herunter und liefert sie selbst aus – keine Anfragen an Google.
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-fraunces",
-  axes: ["opsz"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
+// Saira: eckige, technische Grotesk – passt zum Logo-Schriftzug. wdth-Achse für die breite Headline-Optik.
+const saira = Saira({ subsets: ["latin"], variable: "--font-saira", axes: ["wdth"], display: "swap" });
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", display: "swap" });
 
 export const metadata: Metadata = {
@@ -52,14 +47,14 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="de" className={`${fraunces.variable} ${manrope.variable}`}>
+    <html lang="de" className={`${saira.variable} ${manrope.variable}`}>
       <body>
         <noscript>
           <style>{`.reveal{opacity:1!important;transform:none!important}`}</style>
         </noscript>
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-champagne focus:px-5 focus:py-3 focus:text-ink"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-brand-dark focus:px-5 focus:py-3 focus:text-white"
         >
           Zum Inhalt springen
         </a>

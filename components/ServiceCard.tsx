@@ -24,7 +24,7 @@ export default function ServiceCard({ service, index }: { service: Service; inde
         <p className="mt-3 flex-1 leading-relaxed text-mist">{service.text}</p>
         <Link
           href={`/leistungen#${service.id}`}
-          className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-champagne-light"
+          className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-brand-light"
         >
           <span className="link-underline">Mehr erfahren</span>
           <ArrowRightIcon width={16} height={16} className="transition-transform duration-500 group-hover:translate-x-1" />

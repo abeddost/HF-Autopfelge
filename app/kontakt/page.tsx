@@ -28,7 +28,7 @@ export default function KontaktPage() {
         eyebrow="Kontakt"
         title={
           <>
-            Termin anfragen – <span className="text-gold">ganz einfach.</span>
+            Termin anfragen – <span className="text-shine">ganz einfach.</span>
           </>
         }
         intro="Rufen Sie an oder schreiben Sie uns per WhatsApp. Wir melden uns schnellstmöglich und finden gemeinsam einen passenden Termin."
@@ -94,14 +94,14 @@ function ContactTile({ icon, label, value, hint }: { icon: ReactNode; label: str
   return (
     <div className="flex items-start justify-between gap-6">
       <div>
-        <span className="grid h-14 w-14 place-items-center rounded-2xl border border-champagne/30 bg-champagne/[0.06] text-champagne">
+        <span className="grid h-14 w-14 place-items-center rounded-2xl border border-brand/30 bg-brand/[0.06] text-brand">
           {icon}
         </span>
         <p className="mt-8 text-xs font-semibold uppercase tracking-[0.24em] text-mist">{label}</p>
         <p className="mt-2 font-display text-3xl text-snow sm:text-4xl">{value}</p>
         <p className="mt-2 text-mist">{hint}</p>
       </div>
-      <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-white/15 text-snow transition-all duration-500 group-hover:border-champagne group-hover:bg-champagne group-hover:text-ink">
+      <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-white/15 text-snow transition-all duration-500 group-hover:border-brand-dark group-hover:bg-brand-dark group-hover:text-white">
         <ArrowRightIcon width={18} height={18} />
       </span>
     </div>

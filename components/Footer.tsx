@@ -10,7 +10,7 @@ export default function Footer() {
       <div className="container-lux">
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <Logo />
+            <Logo variant="full" />
             <p className="mt-6 max-w-sm leading-relaxed text-mist">
               Autopflege und Fahrzeugaufbereitung in Bodenheim – für Kundinnen und Kunden aus Bodenheim, Mainz und
               Rheinhessen.
@@ -19,7 +19,7 @@ export default function Footer() {
 
           {/* NAP-Block: Name, Adresse, Telefon – identisch mit Google-Unternehmensprofil halten */}
           <address className="not-italic lg:col-span-4">
-            <h2 className="text-xs font-semibold uppercase tracking-[0.28em] text-champagne">Kontakt</h2>
+            <h2 className="text-xs font-semibold uppercase tracking-[0.28em] text-brand">Kontakt</h2>
             <ul className="mt-6 space-y-4 text-pearl">
               <li className="flex gap-3">
                 <MapPinIcon className="mt-0.5 shrink-0 text-mist" />
@@ -51,7 +51,7 @@ export default function Footer() {
           </address>
 
           <nav aria-label="Footer-Navigation" className="lg:col-span-3">
-            <h2 className="text-xs font-semibold uppercase tracking-[0.28em] text-champagne">Seiten</h2>
+            <h2 className="text-xs font-semibold uppercase tracking-[0.28em] text-brand">Seiten</h2>
             <ul className="mt-6 space-y-3">
               {nav.map((item) => (
                 <li key={item.href}>

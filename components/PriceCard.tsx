@@ -9,7 +9,7 @@ export default function PriceCard({ pkg, light = false }: { pkg: Package; light?
 
   if (light && !featured) {
     return (
-      <article className="group relative flex h-full flex-col rounded-3xl border border-ink/10 bg-white/70 p-8 transition-all duration-500 hover:-translate-y-1 hover:border-champagne-dark/40 hover:shadow-[0_30px_60px_-30px_rgba(60,45,20,0.35)] sm:p-9">
+      <article className="group relative flex h-full flex-col rounded-3xl border border-ink/10 bg-white/70 p-8 transition-all duration-500 hover:-translate-y-1 hover:border-brand-dark/40 hover:shadow-[0_30px_60px_-30px_rgba(15,30,70,0.35)] sm:p-9">
         <CardBody pkg={pkg} message={message} tone="light" />
       </article>
     );
@@ -19,11 +19,11 @@ export default function PriceCard({ pkg, light = false }: { pkg: Package; light?
     <SheenCard
       as="article"
       className={`flex h-full flex-col p-8 sm:p-9 ${
-        featured ? "!border-champagne/40 !bg-[linear-gradient(160deg,#23201a,#121418_70%)] shadow-[0_40px_80px_-40px_rgba(201,168,106,0.45)]" : ""
+        featured ? "!border-brand/40 !bg-[linear-gradient(160deg,#131b2e,#121418_70%)] shadow-[0_40px_80px_-40px_rgba(0,74,225,0.45)]" : ""
       } ${light ? "!bg-ink" : ""}`}
     >
       {featured && (
-        <span className="absolute -top-3.5 left-8 rounded-full bg-champagne px-3.5 py-1 text-[0.65rem] font-bold uppercase tracking-[0.2em] text-ink">
+        <span className="absolute -top-3.5 left-8 rounded-full bg-brand-dark px-3.5 py-1 text-[0.65rem] font-bold uppercase tracking-[0.2em] text-white">
           Beliebt
         </span>
       )}
@@ -53,13 +53,13 @@ function CardBody({
         <span className={`font-display text-5xl tracking-tight ${dark ? "text-snow" : "text-ink"}`}>
           {pkg.price !== null ? pkg.price.toLocaleString("de-DE") : "–"}
         </span>
-        <span className={`text-xl ${dark ? "text-champagne" : "text-champagne-dark"}`}>€</span>
+        <span className={`text-xl ${dark ? "text-brand" : "text-brand-dark"}`}>€</span>
       </p>
       <div className={`my-7 h-px ${dark ? "bg-white/[0.08]" : "bg-ink/10"}`} />
       <ul className="flex-1 space-y-3.5">
         {pkg.includes.map((item) => (
           <li key={item} className={`flex gap-3 text-[0.95rem] ${dark ? "text-pearl" : "text-ink/80"}`}>
-            <CheckIcon width={18} height={18} className={`mt-0.5 shrink-0 ${dark ? "text-champagne" : "text-champagne-dark"}`} />
+            <CheckIcon width={18} height={18} className={`mt-0.5 shrink-0 ${dark ? "text-brand" : "text-brand-dark"}`} />
             {item}
           </li>
         ))}
@@ -68,7 +68,7 @@ function CardBody({
         href={whatsappLink(message)}
         target="_blank"
         rel="noopener noreferrer"
-        className={`btn mt-9 w-full ${featured ? "btn-gold" : dark ? "btn-ghost" : "btn-dark"}`}
+        className={`btn mt-9 w-full ${featured ? "btn-primary" : dark ? "btn-ghost" : "btn-dark"}`}
         aria-label={`Termin anfragen: ${pkg.name} (öffnet WhatsApp)`}
       >
         Termin anfragen

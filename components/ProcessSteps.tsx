@@ -26,7 +26,7 @@ export default function ProcessSteps() {
         <Reveal as="li" key={step.title} delay={i * 120} className="relative">
           <div className="hairline relative h-full rounded-3xl bg-coal/60 p-8 sm:p-9">
             <div className="flex items-center justify-between">
-              <span className="grid h-14 w-14 place-items-center rounded-2xl border border-champagne/30 bg-champagne/[0.06] text-champagne">
+              <span className="grid h-14 w-14 place-items-center rounded-2xl border border-brand/30 bg-brand/[0.06] text-brand">
                 <step.icon width={24} height={24} />
               </span>
               <span className="font-display text-6xl leading-none text-white/[0.06]">0{i + 1}</span>

@@ -19,7 +19,7 @@ export default function SectionHeading({
   const center = align === "center";
   return (
     <Reveal className={`max-w-3xl ${center ? "mx-auto text-center" : ""}`}>
-      <p className={`eyebrow ${center ? "justify-center" : ""} ${light ? "!text-champagne-deep" : ""}`}>{eyebrow}</p>
+      <p className={`eyebrow ${center ? "justify-center" : ""} ${light ? "!text-brand-deep" : ""}`}>{eyebrow}</p>
       <Tag
         className={`h-display mt-5 text-[2.4rem] sm:text-5xl lg:text-[3.6rem] ${light ? "text-ink" : "text-snow"}`}
       >
