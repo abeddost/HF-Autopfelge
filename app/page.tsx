@@ -180,9 +180,14 @@ export default function HomePage() {
             ))}
           </div>
           <Reveal className="mt-14 text-center">
-            <Link href="/preise" className="btn btn-dark">
-              Alle Preise ansehen <ArrowRightIcon width={18} height={18} />
-            </Link>
+            <div className="flex flex-col justify-center gap-3 sm:flex-row">
+              <Link href="/preisrechner" className="btn btn-primary">
+                Preis berechnen <ArrowRightIcon width={18} height={18} />
+              </Link>
+              <Link href="/preise" className="btn btn-dark">
+                Alle Preise ansehen <ArrowRightIcon width={18} height={18} />
+              </Link>
+            </div>
           </Reveal>
         </div>
       </section>

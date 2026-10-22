@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { CallButton, WhatsAppButton } from "@/components/ContactButtons";
 import CTASection from "@/components/CTASection";
 import EnquiryBuilder from "@/components/EnquiryBuilder";
 import ExtrasTable from "@/components/ExtrasTable";
-import { SparkleIcon } from "@/components/icons";
+import { ArrowRightIcon, SparkleIcon } from "@/components/icons";
 import JsonLd from "@/components/JsonLd";
 import PageHero from "@/components/PageHero";
 import PriceCard from "@/components/PriceCard";
@@ -34,7 +35,10 @@ export default function PreisePage() {
         video={videos.politur}
       >
         <div className="flex flex-col gap-3 sm:flex-row">
-          <CallButton />
+          <Link href="/preisrechner" className="btn btn-primary">
+            Preis berechnen <ArrowRightIcon width={18} height={18} />
+          </Link>
+          <CallButton variant="ghost" />
           <WhatsAppButton />
         </div>
       </PageHero>

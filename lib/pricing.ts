@@ -8,6 +8,7 @@ export type Package = {
   tagline: string;
   includes: string[];
   featured?: boolean;
+  includedExtras?: string[]; // Einzelleistungen, die im Paket schon enthalten sind (Preisrechner)
 };
 
 export type Extra = {
@@ -15,7 +16,19 @@ export type Extra = {
   name: string;
   price: number | null; // null = nach Aufwand
   note?: string;
+  scales: boolean; // false = Preis unabhängig von der Fahrzeuggröße (Preisrechner)
 };
+
+export type VehicleSize = { id: string; name: string; factor: number };
+
+// VORSCHLAG – Größenfaktoren für den Preisrechner vom Inhaber prüfen. 1 = Richtpreis wie angegeben.
+export const vehicleSizes: VehicleSize[] = [
+  { id: "klein", name: "Kleinwagen", factor: 0.9 },
+  { id: "kompakt", name: "Kompakt / Limousine", factor: 1 },
+  { id: "kombi", name: "Kombi", factor: 1.1 },
+  { id: "suv", name: "SUV / Van", factor: 1.2 },
+  { id: "transporter", name: "Transporter", factor: 1.35 },
+];
 
 export const packages: Package[] = [
   {
@@ -73,6 +86,7 @@ export const packages: Package[] = [
       "Polster- bzw. Teppichreinigung",
       "Leichte Kratzer auspolieren, soweit möglich",
     ],
+    includedExtras: ["polster"],
   },
   {
     id: "keramik",
@@ -89,15 +103,15 @@ export const packages: Package[] = [
 ];
 
 export const extras: Extra[] = [
-  { id: "polster", name: "Polster- oder Teppichreinigung", price: 89 },
-  { id: "leder", name: "Lederreinigung & -pflege", price: 89 },
-  { id: "himmel", name: "Himmelreinigung", price: 79 },
-  { id: "felgen", name: "Felgenreinigung (intensiv)", price: 39 },
-  { id: "scheinwerfer", name: "Scheinwerferaufbereitung", price: 69, note: "Paar" },
-  { id: "motorraum", name: "Motorraumreinigung", price: 89 },
-  { id: "ozon", name: "Ozonbehandlung gegen Gerüche", price: 89 },
-  { id: "scheibe", name: "Scheibenversiegelung", price: 39, note: "Frontscheibe" },
-  { id: "tierhaare", name: "Tierhaarentfernung", price: null, note: "nach Aufwand" },
+  { id: "polster", name: "Polster- oder Teppichreinigung", price: 89, scales: true },
+  { id: "leder", name: "Lederreinigung & -pflege", price: 89, scales: true },
+  { id: "himmel", name: "Himmelreinigung", price: 79, scales: true },
+  { id: "felgen", name: "Felgenreinigung (intensiv)", price: 39, scales: true },
+  { id: "scheinwerfer", name: "Scheinwerferaufbereitung", price: 69, note: "Paar", scales: false },
+  { id: "motorraum", name: "Motorraumreinigung", price: 89, scales: true },
+  { id: "ozon", name: "Ozonbehandlung gegen Gerüche", price: 89, scales: false },
+  { id: "scheibe", name: "Scheibenversiegelung", price: 39, note: "Frontscheibe", scales: false },
+  { id: "tierhaare", name: "Tierhaarentfernung", price: null, note: "nach Aufwand", scales: true },
 ];
 
 export const priceNote =

@@ -61,5 +61,6 @@ export const nav = [
   { href: "/", label: "Start" },
   { href: "/leistungen", label: "Leistungen" },
   { href: "/preise", label: "Preise" },
+  { href: "/preisrechner", label: "Preisrechner" },
   { href: "/kontakt", label: "Kontakt" },
 ] as const;

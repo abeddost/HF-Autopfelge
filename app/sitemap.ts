@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/autoaufbereitung-bodenheim", priority: 0.9 },
     { path: "/leistungen", priority: 0.9 },
     { path: "/preise", priority: 0.9 },
+    { path: "/preisrechner", priority: 0.8 },
     { path: "/kontakt", priority: 0.8 },
     { path: "/einzugsgebiet", priority: 0.7 },
     { path: "/ratgeber", priority: 0.6 },

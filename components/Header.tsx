@@ -41,7 +41,7 @@ export default function Header() {
 
         <nav aria-label="Hauptnavigation" className="hidden items-center gap-10 md:flex">
           {nav.map((item) => {
-            const active = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+            const active = item.href === "/" ? pathname === "/" : pathname === item.href || pathname.startsWith(`${item.href}/`);
             return (
               <Link
                 key={item.href}

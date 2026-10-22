@@ -273,7 +273,8 @@ export default function KostenRatgeberPage() {
           <li>Fotos vorab schicken – dann gibt es keine Überraschungen beim Preis.</li>
         </ul>
         <p>
-          Alle aktuellen Preise finden Sie auf unserer <Link href="/preise">Preisseite</Link>. Und wenn Sie wissen wollen,
+          Alle aktuellen Preise finden Sie auf unserer <Link href="/preise">Preisseite</Link>; Ihren individuellen
+          Richtpreis berechnen Sie in Sekunden mit unserem <Link href="/preisrechner">Preisrechner</Link>. Und wenn Sie wissen wollen,
           welcher Lackschutz sein Geld wert ist, lesen Sie unseren Vergleich{" "}
           <Link href="/ratgeber/keramikversiegelung-oder-wachs">Keramikversiegelung oder Wachs</Link>.
         </p>

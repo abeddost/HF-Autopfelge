@@ -16,6 +16,8 @@ npm run build    # Produktions-Build
 |---|---|
 | Name, Adresse, Telefon, WhatsApp, Öffnungszeiten, Einzugsgebiet | `lib/site.ts` |
 | Pakete, Einzelleistungen, Preise, MwSt.-Hinweis | `lib/pricing.ts` |
+| Preisrechner: Größenfaktoren (`vehicleSizes`), größenunabhängige Extras (`scales: false`) | `lib/pricing.ts` |
+| Preisrechner: eigene Vorher/Nachher-Fotos statt Illustration (`photoSlots`) | `components/CarVisual.tsx` |
 | Leistungstexte, FAQ, Video-Zuordnung | `lib/services.ts` |
 | Impressum/Datenschutz-Platzhalter | `lib/legal.ts` |
 | Domain (Canonical, Sitemap, strukturierte Daten) | `NEXT_PUBLIC_SITE_URL` (siehe `.env.example`) |
@@ -36,6 +38,7 @@ npm run build    # Produktions-Build
 - [ ] Fahrzeiten und Routen auf den Ortsseiten in Google Maps gegenprüfen
 - [ ] Google-Unternehmensprofil und Social-Media-Links in `lib/seo.ts` unter `sameAs` eintragen
 - [ ] Google Search Console einrichten und `https://hf-autopflege.de/sitemap.xml` einreichen
+- [ ] Größenfaktoren des Preisrechners in `lib/pricing.ts` prüfen (aktuell Vorschläge)
 - [ ] Neue Seite angelegt? In `lib/pages.ts` eintragen (Sitemap, Footer, Links)
 
 ## Videos

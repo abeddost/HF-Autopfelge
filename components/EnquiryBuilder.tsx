@@ -1,11 +1,11 @@
 "use client";
 
 import { useId, useState } from "react";
-import { packages } from "@/lib/pricing";
+import { packages, vehicleSizes } from "@/lib/pricing";
 import { whatsappLink } from "@/lib/site";
 import { ArrowRightIcon, WhatsAppIcon } from "./icons";
 
-const vehicleTypes = ["Kleinwagen", "Kompakt / Limousine", "Kombi", "SUV / Van", "Transporter"];
+const vehicleTypes = vehicleSizes.map((s) => s.name);
 const dayOptions = ["So bald wie möglich", "Diese Woche", "Nächste Woche", "Flexibel"];
 
 /**
