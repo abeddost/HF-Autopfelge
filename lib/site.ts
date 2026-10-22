@@ -3,7 +3,7 @@
 export const site = {
   name: "HF Autopflege Bodenheim",
   shortName: "HF Autopflege",
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.hf-autopflege-bodenheim.de").replace(/\/$/, ""),
+  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://hf-autopflege.de").replace(/\/$/, ""),
   phone: {
     display: "0176 62878366",
     international: "+49 176 62878366",
@@ -27,9 +27,13 @@ export const site = {
     "Gau-Bischofsheim",
     "Harxheim",
     "Lörzweiler",
+    "Mainz",
     "Mainz-Laubenheim",
     "Nierstein",
     "Oppenheim",
+    "Wiesbaden",
+    "Rüsselsheim am Main",
+    "Ingelheim am Rhein",
   ],
 } as const;
 

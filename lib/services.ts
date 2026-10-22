@@ -10,6 +10,7 @@ export type Service = {
   points: string[];
   video: Video;
   packageId?: string; // Verweis auf lib/pricing.ts – ohne Angabe: Einzelleistungen
+  details: { href: string; label: string }[]; // vertiefende SEO-Seiten (lib/pages.ts)
 };
 
 export const videos = {
@@ -29,6 +30,10 @@ export const services: Service[] = [
     points: ["Aussaugen & Tiefenreinigung", "Polster, Leder & Himmel", "Kunststoffpflege & Scheiben"],
     video: videos.innenraum,
     packageId: "innen",
+    details: [
+      { href: "/auto-innenreinigung", label: "Auto-Innenreinigung" },
+      { href: "/polsterreinigung-auto", label: "Polster- & Lederreinigung" },
+    ],
   },
   {
     id: "aussen",
@@ -38,6 +43,10 @@ export const services: Service[] = [
     points: ["Handwäsche & Felgen", "Maschinelle Politur", "Wachs- oder Keramikversiegelung"],
     video: videos.politur,
     packageId: "aussen",
+    details: [
+      { href: "/lackaufbereitung-politur", label: "Lackaufbereitung & Politur" },
+      { href: "/keramikversiegelung", label: "Keramikversiegelung" },
+    ],
   },
   {
     id: "details",
@@ -46,10 +55,17 @@ export const services: Service[] = [
     text: "Scheinwerfer, Motorraum, Fugen und Zierleisten: Gerade die kleinen Dinge machen den Unterschied – dafür nehmen wir uns Zeit.",
     points: ["Scheinwerferaufbereitung", "Motorraumreinigung", "Ozonbehandlung gegen Gerüche"],
     video: videos.scheinwerfer,
+    details: [
+      { href: "/scheinwerfer-aufbereiten", label: "Scheinwerfer aufbereiten" },
+      { href: "/motorraumreinigung", label: "Motorraumreinigung" },
+      { href: "/geruchsentfernung-auto", label: "Geruchsentfernung & Ozon" },
+    ],
   },
 ];
 
-export const faqs = [
+export type FaqItem = { q: string; a: string };
+
+export const faqs: FaqItem[] = [
   {
     q: "Wie vereinbare ich einen Termin?",
     a: "Am schnellsten per Anruf oder WhatsApp unter 0176 62878366. Wir besprechen kurz Ihr Fahrzeug und Ihre Wünsche und finden einen passenden Termin.",

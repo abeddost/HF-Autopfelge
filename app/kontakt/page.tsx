@@ -8,17 +8,16 @@ import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import SheenCard from "@/components/SheenCard";
-import { breadcrumbJsonLd } from "@/lib/seo";
+import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 import { videos } from "@/lib/services";
 import { site, whatsappLink } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Kontakt & Termin – Autopflege Bodenheim",
+export const metadata: Metadata = pageMetadata({
+  path: "/kontakt",
+  title: "Kontakt & Termin – Autopflege Bodenheim | HF Autopflege",
   description:
     "Termin bei HF Autopflege in Bodenheim anfragen: telefonisch unter 0176 62878366 oder per WhatsApp. Hilgestraße 14, 55294 Bodenheim. Mo–Sa 10–18 Uhr.",
-  alternates: { canonical: "/kontakt" },
-  openGraph: { url: "/kontakt" },
-};
+});
 
 export default function KontaktPage() {
   return (

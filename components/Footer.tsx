@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { leistungsseiten, orte, ratgeber } from "@/lib/pages";
 import { hoursSummary, nav, site, whatsappLink } from "@/lib/site";
 import Logo from "./Logo";
 import { ArrowUpRightIcon, ClockIcon, MapPinIcon, PhoneIcon, WhatsAppIcon } from "./icons";
@@ -65,6 +66,19 @@ export default function Footer() {
           </nav>
         </div>
 
+        {/* SEO-Linkspalten: Leistungen, Orte, Ratgeber (Daten aus lib/pages.ts) */}
+        <div className="mt-16 grid gap-12 border-t border-white/[0.06] pt-14 sm:grid-cols-2 lg:grid-cols-12">
+          <FooterLinks title="Leistungen" links={leistungsseiten} className="lg:col-span-4" />
+          <FooterLinks
+            title="Autoaufbereitung in"
+            links={orte}
+            href="/einzugsgebiet"
+            columns
+            className="lg:col-span-5"
+          />
+          <FooterLinks title="Ratgeber" links={ratgeber} href="/ratgeber" className="lg:col-span-3" />
+        </div>
+
         <div className="mt-16 flex flex-col gap-4 border-t border-white/[0.06] pt-8 text-sm text-mist sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {year} {site.name}
@@ -80,5 +94,42 @@ export default function Footer() {
         </div>
       </div>
     </footer>
+  );
+}
+
+function FooterLinks({
+  title,
+  links,
+  href,
+  columns = false,
+  className = "",
+}: {
+  title: string;
+  links: { path: string; label: string }[];
+  href?: string;
+  columns?: boolean;
+  className?: string;
+}) {
+  return (
+    <nav aria-label={title} className={className}>
+      <h2 className="text-xs font-semibold uppercase tracking-[0.28em] text-brand">
+        {href ? (
+          <Link href={href} className="link-underline">
+            {title}
+          </Link>
+        ) : (
+          title
+        )}
+      </h2>
+      <ul className={`mt-6 text-sm ${columns ? "gap-x-8 sm:columns-2 [&>li+li]:mt-3" : "space-y-3"}`}>
+        {links.map((link) => (
+          <li key={link.path} className="break-inside-avoid">
+            <Link href={link.path} className="link-underline text-mist hover:text-snow">
+              {link.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 }

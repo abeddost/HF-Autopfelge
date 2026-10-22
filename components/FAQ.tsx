@@ -1,10 +1,10 @@
-import { faqs } from "@/lib/services";
+import { faqs, type FaqItem } from "@/lib/services";
 import { PlusIcon } from "./icons";
 
-export default function FAQ() {
+export default function FAQ({ items = faqs }: { items?: FaqItem[] }) {
   return (
     <div className="divide-y divide-white/[0.08] border-y border-white/[0.08]">
-      {faqs.map((item) => (
+      {items.map((item) => (
         <details key={item.q} className="group">
           <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6 text-left text-lg text-snow transition-colors hover:text-brand-light sm:text-xl [&::-webkit-details-marker]:hidden">
             <span className="font-display">{item.q}</span>

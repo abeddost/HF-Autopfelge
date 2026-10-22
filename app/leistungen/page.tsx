@@ -7,19 +7,20 @@ import { ArrowRightIcon, CheckIcon } from "@/components/icons";
 import JsonLd from "@/components/JsonLd";
 import LoopVideo from "@/components/LoopVideo";
 import PageHero from "@/components/PageHero";
+import RelatedLinks from "@/components/RelatedLinks";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
+import { leistungsseiten } from "@/lib/pages";
 import { extras, formatPrice, packages } from "@/lib/pricing";
-import { breadcrumbJsonLd } from "@/lib/seo";
+import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 import { services, videos } from "@/lib/services";
 
-export const metadata: Metadata = {
-  title: "Fahrzeugaufbereitung Bodenheim – Leistungen",
+export const metadata: Metadata = pageMetadata({
+  path: "/leistungen",
+  title: "Leistungen: Innenreinigung, Politur & Keramik | HF Autopflege",
   description:
-    "Fahrzeugaufbereitung in Bodenheim: Innenaufbereitung, Politur, Lackversiegelung, Keramikversiegelung und Einzelleistungen wie Scheinwerferaufbereitung. Jetzt Termin anfragen.",
-  alternates: { canonical: "/leistungen" },
-  openGraph: { url: "/leistungen" },
-};
+    "Alle Leistungen: Innenaufbereitung, Polster- & Lederreinigung, Politur, Keramikversiegelung, Leasingrückgabe, Scheinwerfer, Motorraum und Geruchsentfernung.",
+});
 
 export default function LeistungenPage() {
   return (
@@ -29,10 +30,10 @@ export default function LeistungenPage() {
         eyebrow="Leistungen"
         title={
           <>
-            Fahrzeugaufbereitung in <span className="text-shine">Bodenheim</span>
+            Unsere Leistungen – <span className="text-shine">innen, außen</span> und im Detail.
           </>
         }
-        intro="Innen, außen und im Detail: Wir stimmen jede Aufbereitung auf Ihr Fahrzeug ab – und besprechen Umfang und Preis vorab mit Ihnen."
+        intro="Von der Innenreinigung bis zur Keramikversiegelung: Wir stimmen jede Aufbereitung auf Ihr Fahrzeug ab – und besprechen Umfang und Preis vorab mit Ihnen, in unserer Werkstatt in Bodenheim."
         video={videos.scheinwerfer}
       />
 
@@ -66,6 +67,14 @@ export default function LeistungenPage() {
                       </li>
                     ))}
                   </ul>
+                  <p className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold text-brand-light">
+                    {service.details.map((d) => (
+                      <Link key={d.href} href={d.href} className="inline-flex items-center gap-1.5">
+                        <span className="link-underline">{d.label}</span>
+                        <ArrowRightIcon width={14} height={14} />
+                      </Link>
+                    ))}
+                  </p>
                   <p className="mt-9 flex items-baseline gap-3 border-t border-white/[0.08] pt-7">
                     <span className="text-sm text-mist">{price.label}</span>
                     <span className="font-display text-3xl text-snow">{formatPrice(price.value)}</span>
@@ -106,6 +115,12 @@ export default function LeistungenPage() {
           </Reveal>
         </div>
       </section>
+
+      <RelatedLinks
+        eyebrow="Im Detail"
+        title="Alles über unsere Leistungen"
+        paths={[...leistungsseiten.map((l) => l.path), "/ratgeber/autoaufbereitung-kosten"]}
+      />
 
       <CTASection />
     </>

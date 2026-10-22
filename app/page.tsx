@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import { Fragment, type CSSProperties } from "react";
 import Link from "next/link";
 import { CallButton, WhatsAppButton } from "@/components/ContactButtons";
 import CTASection from "@/components/CTASection";
@@ -12,6 +12,7 @@ import ProcessSteps from "@/components/ProcessSteps";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
+import { orte } from "@/lib/pages";
 import { packages } from "@/lib/pricing";
 import { faqJsonLd } from "@/lib/seo";
 import { services, videos } from "@/lib/services";
@@ -196,7 +197,21 @@ export default function HomePage() {
                 Ihre Autopflege in <span className="text-shine">Bodenheim</span>.
               </span>
             }
-            intro={`Sie finden uns in der ${site.address.street} in Bodenheim – nur wenige Minuten von Mainz entfernt. Wir freuen uns auf Kundinnen und Kunden aus Bodenheim, Nackenheim, Gau-Bischofsheim, Harxheim, Lörzweiler, Mainz-Laubenheim, Nierstein und Oppenheim.`}
+            intro={
+              <>
+                Sie finden uns in der {site.address.street} in Bodenheim – nur wenige Minuten von Mainz entfernt. Wir
+                freuen uns auf Kundinnen und Kunden aus{" "}
+                {orte.map((ort, i) => (
+                  <Fragment key={ort.path}>
+                    <Link href={ort.path} className="link-underline text-pearl hover:text-snow">
+                      {ort.label}
+                    </Link>
+                    {i < orte.length - 2 ? ", " : i === orte.length - 2 ? " und " : ""}
+                  </Fragment>
+                ))}{" "}
+                – und dem ganzen <Link href="/einzugsgebiet" className="link-underline text-pearl hover:text-snow">Einzugsgebiet</Link>.
+              </>
+            }
           />
           <div className="mt-14 grid gap-6 lg:mt-20 lg:grid-cols-2">
             <Reveal>

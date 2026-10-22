@@ -9,17 +9,15 @@ import PageHero from "@/components/PageHero";
 import PriceCard from "@/components/PriceCard";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
-import { packages, priceNote, taxNote } from "@/lib/pricing";
-import { breadcrumbJsonLd } from "@/lib/seo";
+import { packagePrice, packages, priceNote, taxNote } from "@/lib/pricing";
+import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 import { videos } from "@/lib/services";
 
-export const metadata: Metadata = {
-  title: "Preise – Autopflege & Fahrzeugaufbereitung Bodenheim",
-  description:
-    "Preise für Autopflege in Bodenheim: Innenaufbereitung ab 119 €, Komplettaufbereitung ab 249 €, Keramikversiegelung ab 599 €. Richtpreise und Einzelleistungen im Überblick.",
-  alternates: { canonical: "/preise" },
-  openGraph: { url: "/preise" },
-};
+export const metadata: Metadata = pageMetadata({
+  path: "/preise",
+  title: "Preise – Autoaufbereitung Bodenheim | HF Autopflege",
+  description: `Autopflege-Preise in Bodenheim: Innenaufbereitung ${packagePrice("innen")}, Komplettaufbereitung ${packagePrice("komplett")}, Keramik ${packagePrice("keramik")}. Alle Richtpreise & Einzelleistungen.`,
+});
 
 export default function PreisePage() {
   return (

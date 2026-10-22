@@ -236,6 +236,120 @@
     background-size: 100% 1px;
   }
 
+  /* Fließtext der SEO-Unterseiten (Leistungen, Orte, Ratgeber) */
+  .prose-lux {
+    color: var(--color-mist);
+    font-size: 1.075rem;
+    line-height: 1.8;
+    max-width: 46rem;
+  }
+  .prose-lux > * + * {
+    margin-top: 1.25rem;
+  }
+  .prose-lux h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-variation-settings: "wdth" 112;
+    color: var(--color-snow);
+    font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    hyphens: auto;
+    text-wrap: balance;
+    margin-top: 3.5rem;
+  }
+  .prose-lux h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--color-snow);
+    font-size: 1.35rem;
+    line-height: 1.25;
+    margin-top: 2.25rem;
+  }
+  .prose-lux > :first-child {
+    margin-top: 0;
+  }
+  .prose-lux strong {
+    color: var(--color-pearl);
+    font-weight: 600;
+  }
+  .prose-lux a {
+    color: var(--color-brand-light);
+    text-decoration: underline;
+    text-decoration-color: rgb(143 180 255 / 0.35);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.3s;
+  }
+  .prose-lux a:hover {
+    text-decoration-color: currentColor;
+  }
+  .prose-lux ul,
+  .prose-lux ol {
+    padding-left: 1.25rem;
+  }
+  .prose-lux ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  .prose-lux ul > li {
+    position: relative;
+    padding-left: 1.6rem;
+  }
+  .prose-lux ul > li::before {
+    content: "";
+    position: absolute;
+    left: 0.15rem;
+    top: 0.72em;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    border: 1.5px solid var(--color-brand);
+  }
+  .prose-lux ol {
+    list-style: decimal;
+  }
+  .prose-lux ol > li::marker {
+    color: var(--color-brand);
+    font-family: var(--font-display);
+  }
+  .prose-lux li + li {
+    margin-top: 0.6rem;
+  }
+  .prose-lux table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .prose-lux .table-wrap {
+    overflow-x: auto;
+    border: 1px solid rgb(255 255 255 / 0.08);
+    border-radius: 1rem;
+  }
+  .prose-lux th,
+  .prose-lux td {
+    padding: 0.85rem 1rem;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid rgb(255 255 255 / 0.06);
+  }
+  .prose-lux th {
+    color: var(--color-snow);
+    font-weight: 600;
+    background: rgb(255 255 255 / 0.03);
+  }
+  .prose-lux td {
+    color: var(--color-pearl);
+  }
+  .prose-lux tr:last-child td {
+    border-bottom: 0;
+  }
+  .prose-lux .note {
+    border-left: 2px solid var(--color-brand);
+    padding: 0.25rem 0 0.25rem 1.25rem;
+    color: var(--color-pearl);
+  }
+
   .grain::after {
     content: "";
     position: absolute;

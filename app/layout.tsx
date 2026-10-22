@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s | HF Autopflege Bodenheim",
   },
   description:
-    "HF Autopflege – Ihre Autopflege in Bodenheim. Fahrzeugaufbereitung innen & außen, Politur und Versiegelung. Hilgestraße 14, Mo–Sa 10–18 Uhr. Jetzt Termin anfragen: 0176 62878366.",
+    "Autopflege in Bodenheim: Fahrzeugaufbereitung innen & außen, Politur und Keramikversiegelung. Hilgestraße 14, Mo–Sa 10–18 Uhr. Termin: 0176 62878366.",
   applicationName: site.name,
   alternates: { canonical: "/" },
   openGraph: {
