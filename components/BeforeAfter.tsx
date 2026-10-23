@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { Zone } from "@/lib/calculator";
-import CarVisual, { photoSlots, type View } from "./CarVisual";
+import CarVisual, { type View } from "./CarVisual";
 
 const nothingClean: ReadonlySet<Zone> = new Set();
 
@@ -12,18 +12,13 @@ const nothingClean: ReadonlySet<Zone> = new Set();
  */
 export default function BeforeAfter({ view, clean }: { view: View; clean: ReadonlySet<Zone> }) {
   const [pos, setPos] = useState(50);
-  const photos = photoSlots[view];
 
-  const layer = (state: "before" | "after") =>
-    photos ? (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img src={photos[state]} alt="" className="h-full w-full object-cover" />
-    ) : (
-      <CarVisual view={view} clean={state === "after" ? clean : nothingClean} />
-    );
+  const layer = (state: "before" | "after") => (
+    <CarVisual view={view} clean={state === "after" ? clean : nothingClean} />
+  );
 
   return (
-    <div className="relative aspect-[800/330] select-none overflow-hidden rounded-3xl bg-[radial-gradient(ellipse_at_50%_30%,#1a1d22,#0b0c0e_75%)]">
+    <div className="relative aspect-[1915/821] select-none overflow-hidden rounded-3xl bg-[radial-gradient(ellipse_at_50%_30%,#1a1d22,#0b0c0e_75%)]">
       <div className="absolute inset-0">{layer("after")}</div>
       <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }} aria-hidden>
         {layer("before")}

@@ -17,7 +17,7 @@ npm run build    # Produktions-Build
 | Name, Adresse, Telefon, WhatsApp, Öffnungszeiten, Einzugsgebiet | `lib/site.ts` |
 | Pakete, Einzelleistungen, Preise, MwSt.-Hinweis | `lib/pricing.ts` |
 | Preisrechner: Größenfaktoren (`vehicleSizes`), größenunabhängige Extras (`scales: false`) | `lib/pricing.ts` |
-| Preisrechner: eigene Vorher/Nachher-Fotos statt Illustration (`photoSlots`) | `components/CarVisual.tsx` |
+| Preisrechner: Vorher/Nachher-Fotos (Originale in `source-images/`, Web-Versionen per `npm run photos`), Bereiche je Leistung | `components/CarVisual.tsx` |
 | Leistungstexte, FAQ, Video-Zuordnung | `lib/services.ts` |
 | Impressum/Datenschutz-Platzhalter | `lib/legal.ts` |
 | Domain (Canonical, Sitemap, strukturierte Daten) | `NEXT_PUBLIC_SITE_URL` (siehe `.env.example`) |

@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "videos": "bash scripts/encode-videos.sh"
+    "videos": "bash scripts/encode-videos.sh",
+    "photos": "bash scripts/encode-photos.sh"
   },
   "dependencies": {
     "next": "16.4.0",

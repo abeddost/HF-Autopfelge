@@ -460,17 +460,3 @@
 .animate-scroll-cue {
   animation: scroll-cue 2.2s var(--ease-lux) infinite;
 }
-
-/* Geruchswellen im Preisrechner (components/CarVisual) */
-@keyframes odor {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-6px);
-  }
-}
-.animate-odor {
-  animation: odor 3s ease-in-out infinite;
-}

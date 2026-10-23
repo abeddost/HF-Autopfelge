@@ -35,7 +35,7 @@ const faqs = [
   },
   {
     q: "Zeigt die Vorschau das echte Ergebnis?",
-    a: "Nein, die Grafik ist eine Illustration. Sie zeigt, welche Bereiche Ihres Autos die gewählten Leistungen abdecken – vom Lack über die Felgen bis zu Polstern und Dachhimmel. Wie das Ergebnis bei Ihrem Auto aussieht, hängt vom Ausgangszustand ab.",
+    a: "Nein, die Fotos sind KI-generierte Symbolbilder. Sie zeigen, welche Bereiche Ihres Autos die gewählten Leistungen abdecken – vom Lack über die Felgen bis zu Polstern und Dachhimmel. Wie das Ergebnis bei Ihrem Auto aussieht, hängt vom Ausgangszustand ab.",
   },
   {
     q: "Werden meine Angaben gespeichert?",

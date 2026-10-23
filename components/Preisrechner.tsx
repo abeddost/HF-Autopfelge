@@ -152,7 +152,7 @@ export default function Preisrechner() {
         </div>
         <BeforeAfter view={view} clean={clean} />
         <p className="mt-2 text-[0.7rem] leading-snug text-mist">
-          Illustration – zeigt, welche Bereiche die gewählten Leistungen abdecken. Regler ziehen zum Vergleichen.
+          Symbolbild (KI-generiert) – zeigt, welche Bereiche die gewählten Leistungen abdecken. Regler ziehen zum Vergleichen.
         </p>
         <div className="mt-6 hidden lg:block">{summary}</div>
       </aside>

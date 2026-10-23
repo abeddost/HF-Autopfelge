@@ -3,7 +3,7 @@
 
 import { extras, packages, vehicleSizes } from "./pricing";
 
-/** Bereiche der Illustration, die durch eine Leistung „sauber“ werden. */
+/** Bereiche der Vorschau, die durch eine Leistung „sauber“ werden. */
 export type Zone =
   // außen
   | "lackSchmutz"
