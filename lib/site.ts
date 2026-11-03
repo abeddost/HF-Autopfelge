@@ -5,11 +5,11 @@ export const site = {
   shortName: "HF Autopflege",
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://hf-autopflege.de").replace(/\/$/, ""),
   phone: {
-    display: "0176 62878366",
-    international: "+49 176 62878366",
-    href: "tel:+4917662878366",
+    display: "0176 76494945",
+    international: "+49 176 76494945",
+    href: "tel:+4917676494945",
   },
-  whatsappNumber: "4917662878366",
+  whatsappNumber: "4917676494945",
   address: {
     street: "Hilgestraße 14",
     zip: "55294",

@@ -68,7 +68,7 @@ export type FaqItem = { q: string; a: string };
 export const faqs: FaqItem[] = [
   {
     q: "Wie vereinbare ich einen Termin?",
-    a: "Am schnellsten per Anruf oder WhatsApp unter 0176 62878366. Wir besprechen kurz Ihr Fahrzeug und Ihre Wünsche und finden einen passenden Termin.",
+    a: "Am schnellsten per Anruf oder WhatsApp unter 0176 76494945. Wir besprechen kurz Ihr Fahrzeug und Ihre Wünsche und finden einen passenden Termin.",
   },
   {
     q: "Wie lange dauert eine Aufbereitung?",

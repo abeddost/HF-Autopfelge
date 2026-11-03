@@ -46,7 +46,7 @@ const faqs = [
   },
   {
     q: "Wie schnell bekomme ich einen Termin?",
-    a: "Das hängt von der Leistung und der Saison ab – vor Ostern und im Herbst ist erfahrungsgemäß mehr los. Am schnellsten klären Sie das per Anruf oder WhatsApp unter 0176 62878366.",
+    a: "Das hängt von der Leistung und der Saison ab – vor Ostern und im Herbst ist erfahrungsgemäß mehr los. Am schnellsten klären Sie das per Anruf oder WhatsApp unter 0176 76494945.",
   },
   {
     q: "Was kostet eine Komplettaufbereitung in Bodenheim?",
