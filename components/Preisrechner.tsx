@@ -1,30 +1,13 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { buildMessage, calculate, cleanedZones, type Selection } from "@/lib/calculator";
+import { buildMessage, calculate, type Selection } from "@/lib/calculator";
+import { defaultPair, pairsFor, pairsForSelection } from "@/lib/beforeAfter";
 import { extras, packages, priceNote, taxNote, vehicleSizes } from "@/lib/pricing";
 import { whatsappLink } from "@/lib/site";
 import BeforeAfter from "./BeforeAfter";
-import type { View } from "./CarVisual";
 import { CallButton } from "./ContactButtons";
 import { ArrowRightIcon, CheckIcon, WhatsAppIcon } from "./icons";
-
-// Welche Ansicht nach einem Klick gezeigt wird – damit man den Effekt sofort sieht.
-const viewOf: Record<string, View | undefined> = {
-  pflegewaesche: "aussen",
-  aussen: "aussen",
-  keramik: "aussen",
-  innen: "innen",
-  polster: "innen",
-  leder: "innen",
-  himmel: "innen",
-  ozon: "innen",
-  tierhaare: "innen",
-  felgen: "aussen",
-  scheinwerfer: "aussen",
-  motorraum: "aussen",
-  scheibe: "aussen",
-};
 
 const euro = (n: number) => `${n.toLocaleString("de-DE")} €`;
 
@@ -59,23 +42,26 @@ const stepNo = "mr-3 inline-grid h-8 w-8 place-items-center rounded-full border 
 
 export default function Preisrechner() {
   const [selection, setSelection] = useState<Selection>({ sizeId: "kompakt", packageId: null, extraIds: [] });
-  const [view, setView] = useState<View>("aussen");
+  const [activePairId, setActivePairId] = useState<string | null>(null);
 
   const result = useMemo(() => calculate(selection), [selection]);
-  const clean = useMemo(() => cleanedZones(selection), [selection]);
+  // Fotopaare der aktuellen Auswahl; angezeigt wird das zuletzt angeklickte, sonst das erste.
+  const shownPairs = useMemo(
+    () => pairsForSelection([...(selection.packageId ? [selection.packageId] : []), ...selection.extraIds]),
+    [selection],
+  );
+  const activePair = shownPairs.find((p) => p.id === activePairId) ?? shownPairs[0] ?? defaultPair;
   const total = useAnimatedNumber(result.total);
   const included = new Set(packages.find((p) => p.id === selection.packageId)?.includedExtras ?? []);
   const empty = result.lines.length === 0;
 
   const choosePackage = (packageId: string | null) => {
     setSelection((s) => ({ ...s, packageId }));
-    const v = packageId ? viewOf[packageId] : undefined;
-    if (v) setView(v);
+    setActivePairId(packageId ? (pairsFor(packageId)[0]?.id ?? null) : null);
   };
   const toggleExtra = (id: string) => {
     const on = !selection.extraIds.includes(id);
-    const v = viewOf[id];
-    if (on && v) setView(v);
+    if (on) setActivePairId(pairsFor(id)[0]?.id ?? activePairId);
     setSelection((s) => ({ ...s, extraIds: on ? [...s.extraIds, id] : s.extraIds.filter((x) => x !== id) }));
   };
   const priceFor = (packageId: string | null, extraIds: string[]) =>
@@ -129,30 +115,35 @@ export default function Preisrechner() {
     <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
       {/* Vorschau – mobil oben angeheftet, am Desktop rechts mitlaufend */}
       <aside className="sticky top-[4.5rem] z-30 -mx-4 self-start border-b border-white/[0.06] bg-ink/95 px-4 pb-3 pt-3 backdrop-blur-xl sm:-mx-8 sm:px-8 lg:order-2 lg:col-span-5 lg:top-28 lg:mx-0 lg:border-0 lg:bg-transparent lg:p-0 lg:backdrop-blur-none">
-        <div className="mb-3 flex items-center justify-between gap-3">
-          <div className="inline-flex rounded-full border border-white/10 p-1" role="group" aria-label="Ansicht">
-            {(["aussen", "innen"] as const).map((v) => (
-              <button
-                key={v}
-                type="button"
-                onClick={() => setView(v)}
-                aria-pressed={view === v}
-                className={`rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] transition-colors ${
-                  view === v ? "bg-brand-dark text-white" : "text-mist hover:text-snow"
-                }`}
-              >
-                {v === "aussen" ? "Außen" : "Innen"}
-              </button>
-            ))}
-          </div>
-          <p className="font-display text-2xl text-snow lg:hidden" aria-hidden>
+        <div className="mb-3 flex items-center justify-between gap-3 lg:hidden">
+          <p className="truncate text-xs font-semibold uppercase tracking-[0.16em] text-mist">{activePair.label}</p>
+          <p className="font-display text-2xl text-snow" aria-hidden>
             <span className="mr-1 text-sm text-mist">ab</span>
             {euro(total)}
           </p>
         </div>
-        <BeforeAfter view={view} clean={clean} />
+        <BeforeAfter key={activePair.id} pair={activePair} priority />
+        {shownPairs.length > 1 && (
+          <div className="mt-3 flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none]" role="group" aria-label="Vorher-Nachher-Bild wählen">
+            {shownPairs.map((p) => (
+              <button
+                key={p.id}
+                type="button"
+                onClick={() => setActivePairId(p.id)}
+                aria-pressed={p.id === activePair.id}
+                className={`shrink-0 rounded-full border px-3.5 py-1.5 text-xs font-semibold transition-colors ${
+                  p.id === activePair.id
+                    ? "border-brand bg-brand-dark text-white"
+                    : "border-white/12 text-mist hover:border-white/30 hover:text-snow"
+                }`}
+              >
+                {p.label}
+              </button>
+            ))}
+          </div>
+        )}
         <p className="mt-2 text-[0.7rem] leading-snug text-mist">
-          Symbolbild (KI-generiert) – zeigt, welche Bereiche die gewählten Leistungen abdecken. Regler ziehen zum Vergleichen.
+          Symbolbild (KI-generiert) – zeigt typische Ergebnisse der gewählten Leistung. Regler ziehen zum Vergleichen.
         </p>
         <div className="mt-6 hidden lg:block">{summary}</div>
       </aside>
@@ -252,7 +243,10 @@ export default function Preisrechner() {
 
         <button
           type="button"
-          onClick={() => setSelection((s) => ({ ...s, packageId: null, extraIds: [] }))}
+          onClick={() => {
+            setSelection((s) => ({ ...s, packageId: null, extraIds: [] }));
+            setActivePairId(null);
+          }}
           className="inline-flex items-center gap-2 text-sm text-mist hover:text-snow"
         >
           <span className="link-underline">Auswahl zurücksetzen</span>

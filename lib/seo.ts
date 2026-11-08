@@ -19,6 +19,7 @@ export function localBusinessJsonLd() {
     url: site.url,
     telephone: site.phone.international,
     image: `${site.url}/videos/detailing.jpg`,
+    logo: `${site.url}/logo-monogram.png`,
     priceRange: "€€",
     currenciesAccepted: "EUR",
     address: {

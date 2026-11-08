@@ -112,6 +112,8 @@ export const extras: Extra[] = [
   { id: "ozon", name: "Ozonbehandlung gegen Gerüche", price: 89, scales: false },
   { id: "scheibe", name: "Scheibenversiegelung", price: 39, note: "Frontscheibe", scales: false },
   { id: "tierhaare", name: "Tierhaarentfernung", price: null, note: "nach Aufwand", scales: true },
+  // VORSCHLAG – SMART Repair (Kratzer, Dellen ohne Lackieren, Felgen) wird je Schaden nach Foto kalkuliert.
+  { id: "smartrepair", name: "SMART Repair (Kratzer, Dellen, Felgen)", price: null, note: "nach Aufwand", scales: false },
 ];
 
 export const priceNote =

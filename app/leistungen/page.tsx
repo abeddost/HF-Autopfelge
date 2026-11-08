@@ -19,7 +19,7 @@ export const metadata: Metadata = pageMetadata({
   path: "/leistungen",
   title: "Leistungen: Innenreinigung, Politur & Keramik | HF Autopflege",
   description:
-    "Alle Leistungen: Innenaufbereitung, Polster- & Lederreinigung, Politur, Keramikversiegelung, Leasingrückgabe, Scheinwerfer, Motorraum und Geruchsentfernung.",
+    "Alle Leistungen: Innenaufbereitung, Polster- & Lederreinigung, Politur, Keramikversiegelung, Leasingrückgabe, Scheinwerfer, SMART Repair, Motorraum und Geruchsentfernung.",
 });
 
 export default function LeistungenPage() {

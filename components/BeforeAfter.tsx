@@ -1,27 +1,49 @@
 "use client";
 
-import { useState } from "react";
-import type { Zone } from "@/lib/calculator";
-import CarVisual, { type View } from "./CarVisual";
-
-const nothingClean: ReadonlySet<Zone> = new Set();
+import { useState, type PointerEvent } from "react";
+import type { Pair } from "@/lib/beforeAfter";
 
 /**
- * Vorher/Nachher-Vergleich mit Schieberegler. Links „Vorher“ (alles ungereinigt), rechts „Nachher“
- * (gewählte Leistungen). Bedienung über ein natives Range-Input – Maus, Touch und Tastatur.
+ * Vorher/Nachher-Vergleich mit Schieberegler: links „Vorher“, rechts „Nachher“.
+ * Bedienung über ein natives Range-Input – Maus, Touch und Tastatur.
+ * Beim Wechsel des Paares blendet das neue Bild weich über – dafür mit key={pair.id} rendern,
+ * damit auch die Reglerposition auf den Startwert des neuen Paares zurückspringt.
  */
-export default function BeforeAfter({ view, clean }: { view: View; clean: ReadonlySet<Zone> }) {
-  const [pos, setPos] = useState(50);
+export default function BeforeAfter({
+  pair,
+  className = "",
+  priority = false,
+}: {
+  pair: Pair;
+  className?: string;
+  priority?: boolean;
+}) {
+  const [pos, setPos] = useState(pair.start ?? 50);
+  function updatePosition(event: PointerEvent<HTMLInputElement>) {
+    const bounds = event.currentTarget.getBoundingClientRect();
+    if (bounds.width === 0) return;
+    setPos(Math.round(Math.max(0, Math.min(100, ((event.clientX - bounds.left) / bounds.width) * 100))));
+  }
 
-  const layer = (state: "before" | "after") => (
-    <CarVisual view={view} clean={state === "after" ? clean : nothingClean} />
-  );
+  const img = "absolute inset-0 h-full w-full object-cover";
+  const loading = priority ? "eager" : "lazy";
 
   return (
-    <div className="relative aspect-[1915/821] select-none overflow-hidden rounded-3xl bg-[radial-gradient(ellipse_at_50%_30%,#1a1d22,#0b0c0e_75%)]">
-      <div className="absolute inset-0">{layer("after")}</div>
-      <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }} aria-hidden>
-        {layer("before")}
+    <div
+      className={`relative select-none overflow-hidden rounded-3xl bg-graphite ${className}`}
+      style={{ aspectRatio: `${pair.width} / ${pair.height}` }}
+    >
+      <div key={pair.id} className="animate-pair-in absolute inset-0">
+        <img src={pair.after} alt={`Nachher: ${pair.alt}`} loading={loading} decoding="async" className={img} />
+        <img
+          src={pair.before}
+          alt=""
+          aria-hidden
+          loading={loading}
+          decoding="async"
+          className={img}
+          style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
+        />
       </div>
 
       <span className="pointer-events-none absolute left-3 top-3 rounded-full bg-black/55 px-2.5 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-pearl backdrop-blur">
@@ -37,7 +59,25 @@ export default function BeforeAfter({ view, clean }: { view: View; clean: Readon
         max={100}
         value={pos}
         onChange={(e) => setPos(Number(e.target.value))}
-        aria-label="Vorher-Nachher-Vergleich verschieben"
+        onPointerDown={(event) => {
+          if (event.button !== 0) return;
+          event.preventDefault();
+          event.currentTarget.focus({ preventScroll: true });
+          event.currentTarget.setPointerCapture(event.pointerId);
+          updatePosition(event);
+        }}
+        onPointerMove={(event) => {
+          if (event.currentTarget.hasPointerCapture(event.pointerId)) updatePosition(event);
+        }}
+        onPointerUp={(event) => {
+          if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+            updatePosition(event);
+            event.currentTarget.releasePointerCapture(event.pointerId);
+          }
+        }}
+        aria-label={`Vorher-Nachher-Vergleich verschieben: ${pair.label}`}
+        aria-valuetext={`${pos} % Vorher, ${100 - pos} % Nachher`}
+        style={{ touchAction: "pan-y" }}
         className="peer absolute inset-0 z-10 h-full w-full cursor-ew-resize opacity-0"
       />
       <div

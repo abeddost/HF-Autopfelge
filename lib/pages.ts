@@ -137,6 +137,13 @@ export const seoPages: SeoPage[] = [
     updated: "2026-10-22",
   },
   {
+    path: "/smart-repair",
+    label: "SMART Repair",
+    summary: "Kratzer, kleine Dellen und Bordsteinschäden an Felgen ausbessern – ohne Teillackierung.",
+    kind: "leistung",
+    updated: "2026-11-08",
+  },
+  {
     path: "/geruchsentfernung-auto",
     label: "Geruchsentfernung & Ozon",
     summary: "Rauch-, Tier- und Feuchtigkeitsgeruch an der Ursache behandeln.",

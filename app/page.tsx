@@ -2,6 +2,7 @@ import { Fragment, type CSSProperties } from "react";
 import Link from "next/link";
 import { CallButton, WhatsAppButton } from "@/components/ContactButtons";
 import CTASection from "@/components/CTASection";
+import BeforeAfter from "@/components/BeforeAfter";
 import FAQ from "@/components/FAQ";
 import { HoursCard, LocationCard } from "@/components/HoursCard";
 import { ArrowRightIcon, CheckIcon, ClockIcon, MapPinIcon, PhoneIcon } from "@/components/icons";
@@ -11,71 +12,125 @@ import PriceCard from "@/components/PriceCard";
 import ProcessSteps from "@/components/ProcessSteps";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
+import ScrollHero from "@/components/ScrollHero";
 import ServiceCard from "@/components/ServiceCard";
+import { showcasePairs } from "@/lib/beforeAfter";
 import { orte } from "@/lib/pages";
 import { packages } from "@/lib/pricing";
 import { faqJsonLd } from "@/lib/seo";
 import { services, videos } from "@/lib/services";
 import { hoursSummary, site } from "@/lib/site";
 
+const heroFrame = (name: string) => ({ src: `/hero/${name}-1920.jpg`, srcSmall: `/hero/${name}-1280.jpg` });
 const d = (ms: number) => ({ "--delay": `${ms}ms` }) as CSSProperties;
 
 export default function HomePage() {
   const teaser = ["innen", "komplett", "aussen"].map((id) => packages.find((p) => p.id === id)!);
+  const showcase = showcasePairs();
+
+  const infoBar = (
+    <ul className="grid gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.08] sm:grid-cols-3">
+      {[
+        { icon: MapPinIcon, label: "Adresse", value: `${site.address.street}, ${site.address.city}`, href: site.mapsUrl },
+        { icon: ClockIcon, label: "Öffnungszeiten", value: "Mo–Sa · 10–18 Uhr" },
+        { icon: PhoneIcon, label: "Telefon & WhatsApp", value: site.phone.display, href: site.phone.href },
+      ].map(({ icon: Icon, label, value, href }) => (
+        <li key={label} className="flex items-center gap-4 bg-ink/70 px-5 py-4 backdrop-blur-md">
+          <Icon className="shrink-0 text-brand" />
+          <div className="min-w-0">
+            <p className="text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-mist">{label}</p>
+            <p className="truncate text-snow">
+              {href ? (
+                <a
+                  href={href}
+                  className="link-underline"
+                  {...(href.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
+                >
+                  {value}
+                </a>
+              ) : (
+                value
+              )}
+            </p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  );
 
   return (
     <>
       <JsonLd data={faqJsonLd()} />
 
-      {/* Hero */}
-      <section className="grain relative isolate flex min-h-[100svh] flex-col justify-end overflow-hidden">
-        <LoopVideo slug={videos.detailing.slug} alt={videos.detailing.alt} priority decorative className="animate-slow-zoom -z-20" />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/55 to-ink/30" />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ink/85 via-ink/35 to-transparent" />
+      {/* Hero – Scroll-Szene: schmutzig → Schaum → poliert */}
+      <ScrollHero
+        dirty={heroFrame("hero-schmutzig")}
+        foam={heroFrame("hero-schaum")}
+        clean={heroFrame("hero-sauber")}
+        alt="Dunkelblaue BMW-3er-Limousine, frisch aufbereitet und poliert, im Studio von HF Autopflege (Symbolbild, KI-generiert)"
+        footer={infoBar}
+      >
+        <h1 className="h-display animate-hero-in max-w-3xl text-[2.4rem] sm:text-6xl lg:text-[4.6rem]" style={d(120)}>
+          Autopflege & <span className="text-shine">Fahrzeugaufbereitung</span> in Bodenheim
+        </h1>
+        <p className="animate-hero-in mt-6 max-w-xl text-lg leading-relaxed text-pearl sm:text-xl" style={d(240)}>
+          Gründliche Pflege für Ihr Auto – innen wie außen. Rufen Sie an oder schreiben Sie uns, wir finden einen
+          passenden Termin.
+        </p>
+        <div className="animate-hero-in mt-9 flex flex-col gap-3 sm:flex-row" style={d(360)}>
+          <CallButton />
+          <WhatsAppButton />
+        </div>
+      </ScrollHero>
+      <div className="container-lux pt-8 sm:hidden">{infoBar}</div>
 
-        <div className="container-lux pb-14 pt-36 sm:pb-20 lg:pb-24">
-          <h1 className="h-display animate-hero-in max-w-5xl text-[2.5rem] sm:text-6xl lg:text-[5.5rem]" style={d(120)}>
-            Autopflege & <span className="text-shine">Fahrzeugaufbereitung</span> in Bodenheim
-          </h1>
-          <p className="animate-hero-in mt-7 max-w-xl text-lg leading-relaxed text-pearl sm:text-xl" style={d(240)}>
-            Gründliche Pflege für Ihr Auto – innen wie außen. Rufen Sie an oder schreiben Sie uns, wir finden einen
-            passenden Termin.
-          </p>
-          <div className="animate-hero-in mt-10 flex flex-col gap-3 sm:flex-row" style={d(360)}>
-            <CallButton />
-            <WhatsAppButton />
+      {/* Vorher / Nachher */}
+      <section className="section relative isolate overflow-hidden" aria-labelledby="vorher-nachher">
+        <div aria-hidden className="floor-grid -z-10" />
+        <div aria-hidden className="absolute left-1/2 top-1/3 -z-10 h-[38rem] w-[60rem] -translate-x-1/2 rounded-full bg-brand/10 blur-[120px]" />
+        <div className="container-lux">
+          <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
+            <SectionHeading
+              eyebrow="Vorher / Nachher"
+              title={
+                <span id="vorher-nachher">
+                  Der Unterschied, <span className="text-shine">zum Anfassen</span>.
+                </span>
+              }
+              intro="Ziehen Sie den Regler und sehen Sie, was eine gründliche Aufbereitung aus einem Auto macht."
+            />
+            <Reveal delay={150}>
+              <Link href="/preisrechner" className="btn btn-ghost">
+                Zum Preisrechner <ArrowRightIcon width={18} height={18} />
+              </Link>
+            </Reveal>
           </div>
-
-          <ul
-            className="animate-hero-in mt-16 grid gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.08] sm:grid-cols-3"
-            style={d(480)}
-          >
-            {[
-              { icon: MapPinIcon, label: "Adresse", value: `${site.address.street}, ${site.address.city}`, href: site.mapsUrl },
-              { icon: ClockIcon, label: "Öffnungszeiten", value: "Mo–Sa · 10–18 Uhr" },
-              { icon: PhoneIcon, label: "Telefon & WhatsApp", value: site.phone.display, href: site.phone.href },
-            ].map(({ icon: Icon, label, value, href }) => (
-              <li key={label} className="flex items-center gap-4 bg-ink/70 px-5 py-4 backdrop-blur-md">
-                <Icon className="shrink-0 text-brand" />
-                <div className="min-w-0">
-                  <p className="text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-mist">{label}</p>
-                  <p className="truncate text-snow">
-                    {href ? (
-                      <a
-                        href={href}
-                        className="link-underline"
-                        {...(href.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
-                      >
-                        {value}
-                      </a>
-                    ) : (
-                      value
-                    )}
-                  </p>
+          <div className="mt-14 grid gap-8 md:grid-cols-2 lg:mt-20 lg:gap-10">
+            {showcase.map((pair, i) => (
+              <Reveal
+                key={pair.id}
+                delay={i * 120}
+                className={
+                  i % 2 === 1
+                    ? "md:mt-20"
+                    : i === showcase.length - 1
+                      ? "md:col-span-2 md:mx-auto md:w-2/3" // ungerade Anzahl: letzte Karte mittig
+                      : ""
+                }
+              >
+                <div className="relative">
+                  <BeforeAfter pair={pair} className="hairline" />
+                  <span
+                    className="pointer-events-none absolute -bottom-4 left-5 z-20 inline-flex items-center gap-3 rounded-full border border-white/10 bg-ink/80 px-4 py-2 shadow-2xl backdrop-blur-md"
+                  >
+                    <span className="font-display text-sm text-brand">0{i + 1}</span>
+                    <span className="text-sm font-semibold text-snow">{pair.label}</span>
+                  </span>
                 </div>
-              </li>
+              </Reveal>
             ))}
-          </ul>
+          </div>
+          <p className="mt-12 text-xs text-mist">Symbolbilder (KI-generiert) – zeigen typische Ergebnisse.</p>
         </div>
       </section>
 
